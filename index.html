@@ -13,10 +13,13 @@
       padding: 0;
       box-sizing: border-box;
       font-family: 'Inter', sans-serif;
+      cursor: none;
     }
 
     body {
-      background: radial-gradient(circle at top, #0f172a, #020617);
+      background: linear-gradient(270deg, #0f172a, #020617, #1e293b);
+      background-size: 600% 600%;
+      animation: gradientMove 12s ease infinite;
       color: #e5e7eb;
       display: flex;
       justify-content: center;
@@ -35,7 +38,6 @@
     .header {
       text-align: center;
       margin-bottom: 50px;
-      animation: slideDown 1s ease;
     }
 
     .logo {
@@ -45,7 +47,7 @@
     }
 
     .title {
-      font-size: 38px;
+      font-size: 40px;
       font-weight: 600;
       margin-top: 10px;
     }
@@ -63,10 +65,10 @@
       padding: 20px;
       margin-bottom: 18px;
       border-radius: 16px;
-      background: rgba(255, 255, 255, 0.04);
-      backdrop-filter: blur(12px);
-      transition: all 0.35s ease;
-      border: 1px solid rgba(255,255,255,0.05);
+      background: rgba(255, 255, 255, 0.05);
+      backdrop-filter: blur(14px);
+      transition: all 0.4s ease;
+      border: 1px solid rgba(255,255,255,0.08);
       transform: translateY(20px);
       opacity: 0;
       animation: cardFade 0.6s forwards;
@@ -79,10 +81,10 @@
     .card:nth-child(5) { animation-delay: 0.6s; }
 
     .card:hover {
-      transform: translateY(-8px) scale(1.03);
-      background: rgba(255, 255, 255, 0.08);
-      border: 1px solid rgba(255,255,255,0.2);
-      box-shadow: 0 0 25px rgba(99,102,241,0.3);
+      transform: translateY(-10px) scale(1.04);
+      background: rgba(255, 255, 255, 0.1);
+      border: 1px solid rgba(255,255,255,0.25);
+      box-shadow: 0 0 40px rgba(99,102,241,0.5);
     }
 
     .card-title {
@@ -92,7 +94,7 @@
 
     .card-desc {
       font-size: 13px;
-      opacity: 0.5;
+      opacity: 0.6;
       margin-top: 6px;
     }
 
@@ -101,7 +103,19 @@
       margin-top: 40px;
       font-size: 12px;
       opacity: 0.4;
-      animation: fadeIn 2s ease;
+    }
+
+    /* Custom cursor */
+    .cursor {
+      width: 20px;
+      height: 20px;
+      border: 2px solid #6366f1;
+      border-radius: 50%;
+      position: fixed;
+      pointer-events: none;
+      transform: translate(-50%, -50%);
+      transition: transform 0.1s ease;
+      z-index: 999;
     }
 
     /* Animations */
@@ -110,60 +124,81 @@
       to { opacity: 1; }
     }
 
-    @keyframes slideDown {
-      from { transform: translateY(-30px); opacity: 0; }
-      to { transform: translateY(0); opacity: 1; }
-    }
-
     @keyframes cardFade {
       to {
         transform: translateY(0);
         opacity: 1;
       }
     }
+
+    @keyframes gradientMove {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
   </style>
 </head>
 
 <body>
 
-  <div class="container">
+<div class="cursor" id="cursor"></div>
 
-    <div class="header">
-      <div class="logo">ORILO</div>
-      <div class="title">Creative Ecosystem</div>
-      <div class="subtitle">Multi-brand digital universe</div>
-    </div>
+<div class="container">
 
-    <a href="sakawiji.html" class="card">
-      <div class="card-title">SakaWiji</div>
-      <div class="card-desc">Creative identity & philosophy</div>
-    </a>
-
-    <a href="kitchenix.html" class="card">
-      <div class="card-title">Kitchenix</div>
-      <div class="card-desc">Culinary innovation & concept</div>
-    </a>
-
-    <a href="pixora.html" class="card">
-      <div class="card-title">Pixora</div>
-      <div class="card-desc">Visual design & digital assets</div>
-    </a>
-
-    <a href="ngemilo.html" class="card">
-      <div class="card-title">Ngemilo</div>
-      <div class="card-desc">Snack brand & lifestyle</div>
-    </a>
-
-    <a href="arcteak.html" class="card">
-      <div class="card-title">Arcteak</div>
-      <div class="card-desc">Modern woodcraft & furniture</div>
-    </a>
-
-    <div class="footer">
-      © 2026 ORILO — Built with style ⚡
-    </div>
-
+  <div class="header">
+    <div class="logo">ORILO</div>
+    <div class="title">Creative Ecosystem</div>
+    <div class="subtitle">Multi-brand digital universe</div>
   </div>
+
+  <a href="sakawiji.html" class="card">
+    <div class="card-title">SakaWiji</div>
+    <div class="card-desc">Creative identity & philosophy</div>
+  </a>
+
+  <a href="kitchenix.html" class="card">
+    <div class="card-title">Kitchenix</div>
+    <div class="card-desc">Culinary innovation</div>
+  </a>
+
+  <a href="pixora.html" class="card">
+    <div class="card-title">Pixora</div>
+    <div class="card-desc">Visual & digital design</div>
+  </a>
+
+  <a href="ngemilo.html" class="card">
+    <div class="card-title">Ngemilo</div>
+    <div class="card-desc">Snack & lifestyle brand</div>
+  </a>
+
+  <a href="arcteak.html" class="card">
+    <div class="card-title">Arcteak</div>
+    <div class="card-desc">Woodcraft & furniture</div>
+  </a>
+
+  <div class="footer">
+    © 2026 ORILO — Built like a beast ⚡
+  </div>
+
+</div>
+
+<script>
+  const cursor = document.getElementById("cursor");
+
+  document.addEventListener("mousemove", (e) => {
+    cursor.style.left = e.clientX + "px";
+    cursor.style.top = e.clientY + "px";
+  });
+
+  document.querySelectorAll(".card").forEach(card => {
+    card.addEventListener("mouseenter", () => {
+      cursor.style.transform = "translate(-50%, -50%) scale(1.8)";
+    });
+    card.addEventListener("mouseleave", () => {
+      cursor.style.transform = "translate(-50%, -50%) scale(1)";
+    });
+  });
+</script>
 
 </body>
 </html>
