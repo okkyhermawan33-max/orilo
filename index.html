@@ -1,33 +1,138 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-  <title>Orilo Creative Pulse</title>
-  <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>ORILO - Creative Pulse</title>
+
+  <!-- Google Font -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Inter', sans-serif;
+    }
+
+    body {
+      background: radial-gradient(circle at top, #0f172a, #020617);
+      color: #e5e7eb;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+
+    .container {
+      width: 100%;
+      max-width: 700px;
+      padding: 30px;
+    }
+
+    .header {
+      text-align: center;
+      margin-bottom: 40px;
+    }
+
+    .logo {
+      font-size: 14px;
+      letter-spacing: 3px;
+      opacity: 0.6;
+    }
+
+    .title {
+      font-size: 36px;
+      font-weight: 600;
+      margin-top: 10px;
+    }
+
+    .subtitle {
+      font-size: 14px;
+      opacity: 0.5;
+      margin-top: 5px;
+    }
+
+    .card {
+      display: block;
+      text-decoration: none;
+      color: #fff;
+      padding: 20px;
+      margin-bottom: 15px;
+      border-radius: 14px;
+      background: rgba(255, 255, 255, 0.05);
+      backdrop-filter: blur(10px);
+      transition: all 0.25s ease;
+      border: 1px solid rgba(255,255,255,0.05);
+    }
+
+    .card:hover {
+      transform: translateY(-5px) scale(1.02);
+      background: rgba(255, 255, 255, 0.08);
+      border: 1px solid rgba(255,255,255,0.15);
+    }
+
+    .card-title {
+      font-size: 18px;
+      font-weight: 500;
+    }
+
+    .card-desc {
+      font-size: 13px;
+      opacity: 0.5;
+      margin-top: 5px;
+    }
+
+    .footer {
+      text-align: center;
+      margin-top: 30px;
+      font-size: 12px;
+      opacity: 0.4;
+    }
+  </style>
 </head>
 
 <body>
 
-<div class="nav">
-  <div class="logo">ORILO</div>
-  <div>Creative Pulse</div>
-</div>
+  <div class="container">
 
-<div class="container">
+    <div class="header">
+      <div class="logo">ORILO</div>
+      <div class="title">Creative Ecosystem</div>
+      <div class="subtitle">Multi-brand digital universe</div>
+    </div>
 
-  <h1>Creative Ecosystem</h1>
-  <p>Multi-brand digital universe.</p>
+    <a href="sakawiji.html" class="card">
+      <div class="card-title">SakaWiji</div>
+      <div class="card-desc">Creative identity & philosophy</div>
+    </a>
 
-  <div class="grid">
+    <a href="kitchenix.html" class="card">
+      <div class="card-title">Kitchenix</div>
+      <div class="card-desc">Culinary concept & food innovation</div>
+    </a>
 
-    <a href="sakawiji.html"><div class="card">SakaWiji</div></a>
-    <a href="kitchenix.html"><div class="card">Kitchenix</div></a>
-    <a href="pixora.html"><div class="card">Pixora</div></a>
-    <a href="ngemilo.html"><div class="card">Ngemilo</div></a>
-    <a href="arcteak.html"><div class="card">Arcteak</div></a>
+    <a href="pixora.html" class="card">
+      <div class="card-title">Pixora</div>
+      <div class="card-desc">Visual design & digital assets</div>
+    </a>
+
+    <a href="ngemilo.html" class="card">
+      <div class="card-title">Ngemilo</div>
+      <div class="card-desc">Snack brand & lifestyle</div>
+    </a>
+
+    <a href="arcteak.html" class="card">
+      <div class="card-title">Arcteak</div>
+      <div class="card-desc">Modern furniture & woodcraft</div>
+    </a>
+
+    <div class="footer">
+      © 2026 ORILO — All Rights Reserved
+    </div>
 
   </div>
-
-</div>
 
 </body>
 </html>
