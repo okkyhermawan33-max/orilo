@@ -109,6 +109,12 @@ document.querySelectorAll("a").forEach(link => {
     }, 400);
   });
 });
+
+window.addEventListener("scroll", () => {
+  document.querySelector("video").style.transform =
+    "translateY(" + window.scrollY * 0.3 + "px)";
+});
+  
 </script>
 
 </body>
