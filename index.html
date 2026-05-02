@@ -3,78 +3,87 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>ORILO</title>
+<title>ORILO Agency</title>
 
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
 
 <style>
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  font-family: 'Inter', sans-serif;
-}
+* { margin:0; padding:0; box-sizing:border-box; font-family:Inter,sans-serif; }
 
-body {
-  color: white;
-  overflow-x: hidden;
-}
+body { color:white; overflow-x:hidden; background:#020617; }
 
-/* VIDEO BACKGROUND */
+/* VIDEO BG */
 video {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  z-index: -2;
+  position:fixed;
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  z-index:-2;
 }
-
 .overlay {
-  position: fixed;
-  width: 100%;
-  height: 100%;
-  background: rgba(0,0,0,0.6);
-  z-index: -1;
+  position:fixed;
+  width:100%;
+  height:100%;
+  background:rgba(0,0,0,0.7);
+  z-index:-1;
 }
 
-/* CONTAINER */
-.container {
-  max-width: 700px;
-  margin: auto;
-  padding: 80px 20px;
-  animation: fadeIn 1s ease;
+/* SECTION */
+.section {
+  padding:120px 20px;
+  max-width:1000px;
+  margin:auto;
+  opacity:0;
+  transform:translateY(40px);
+  transition:all 0.8s ease;
+}
+.section.show {
+  opacity:1;
+  transform:translateY(0);
 }
 
-/* CARD */
+/* HERO */
+.hero {
+  text-align:center;
+  padding-top:180px;
+}
+.hero h1 {
+  font-size:48px;
+}
+.hero p {
+  opacity:0.7;
+  margin-top:10px;
+}
+
+/* GRID */
+.grid {
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
+  gap:20px;
+}
+
 .card {
-  display: block;
-  padding: 20px;
-  margin-bottom: 15px;
-  border-radius: 14px;
-  background: rgba(255,255,255,0.05);
-  backdrop-filter: blur(10px);
-  text-decoration: none;
-  color: white;
-  transition: 0.4s;
+  padding:20px;
+  background:rgba(255,255,255,0.05);
+  border-radius:14px;
+  transition:0.3s;
 }
-
 .card:hover {
-  transform: scale(1.05);
-  background: rgba(255,255,255,0.1);
+  transform:translateY(-5px);
+  background:rgba(255,255,255,0.1);
 }
 
-/* FADE OUT */
-.fade-out {
-  opacity: 0;
-  transition: opacity 0.5s ease;
+/* CTA */
+.cta {
+  text-align:center;
 }
-
-/* ANIMATION */
-@keyframes fadeIn {
-  from { opacity: 0; }
-  to { opacity: 1; }
+.cta button {
+  padding:12px 24px;
+  border:none;
+  border-radius:8px;
+  background:#6366f1;
+  color:white;
+  cursor:pointer;
 }
 </style>
 </head>
@@ -86,35 +95,57 @@ video {
 </video>
 <div class="overlay"></div>
 
-<div class="container" id="page">
+<!-- HERO -->
+<div class="section hero show">
+  <h1>ORILO Creative Agency</h1>
+  <p>Building multi-brand digital ecosystem</p>
+</div>
 
-  <h1>ORILO Ecosystem</h1>
+<!-- ABOUT -->
+<div class="section">
+  <h2>About</h2>
+  <p>We create brands, experiences, and digital systems that scale.</p>
+</div>
 
-  <a href="sakawiji.html" class="card">SakaWiji</a>
-  <a href="kitchenix.html" class="card">Kitchenix</a>
-  <a href="pixora.html" class="card">Pixora</a>
-  <a href="ngemilo.html" class="card">Ngemilo</a>
-  <a href="arcteak.html" class="card">Arcteak</a>
+<!-- BRANDS -->
+<div class="section">
+  <h2>Our Brands</h2>
+  <div class="grid">
+    <a href="sakawiji.html" class="card">SakaWiji</a>
+    <a href="kitchenix.html" class="card">Kitchenix</a>
+    <a href="pixora.html" class="card">Pixora</a>
+    <a href="ngemilo.html" class="card">Ngemilo</a>
+    <a href="arcteak.html" class="card">Arcteak</a>
+  </div>
+</div>
 
+<!-- SERVICES -->
+<div class="section">
+  <h2>Services</h2>
+  <div class="grid">
+    <div class="card">Brand Identity</div>
+    <div class="card">Web Design</div>
+    <div class="card">Creative Direction</div>
+  </div>
+</div>
+
+<!-- CTA -->
+<div class="section cta">
+  <h2>Let’s Build Something Big</h2>
+  <button>Contact Us</button>
 </div>
 
 <script>
-document.querySelectorAll("a").forEach(link => {
-  link.addEventListener("click", function(e) {
-    e.preventDefault();
-    document.getElementById("page").classList.add("fade-out");
-
-    setTimeout(() => {
-      window.location = this.href;
-    }, 400);
-  });
-});
+const sections = document.querySelectorAll(".section");
 
 window.addEventListener("scroll", () => {
-  document.querySelector("video").style.transform =
-    "translateY(" + window.scrollY * 0.3 + "px)";
+  sections.forEach(sec => {
+    const top = sec.getBoundingClientRect().top;
+    if(top < window.innerHeight - 100){
+      sec.classList.add("show");
+    }
+  });
 });
-  
 </script>
 
 </body>
