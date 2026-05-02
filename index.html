@@ -5,7 +5,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>ORILO - Creative Pulse</title>
 
-  <!-- Google Font -->
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
 
   <style>
@@ -22,28 +21,31 @@
       display: flex;
       justify-content: center;
       align-items: center;
-      height: 100vh;
+      min-height: 100vh;
+      overflow-x: hidden;
     }
 
     .container {
       width: 100%;
-      max-width: 700px;
+      max-width: 720px;
       padding: 30px;
+      animation: fadeIn 1s ease;
     }
 
     .header {
       text-align: center;
-      margin-bottom: 40px;
+      margin-bottom: 50px;
+      animation: slideDown 1s ease;
     }
 
     .logo {
-      font-size: 14px;
-      letter-spacing: 3px;
+      font-size: 13px;
+      letter-spacing: 4px;
       opacity: 0.6;
     }
 
     .title {
-      font-size: 36px;
+      font-size: 38px;
       font-weight: 600;
       margin-top: 10px;
     }
@@ -51,7 +53,7 @@
     .subtitle {
       font-size: 14px;
       opacity: 0.5;
-      margin-top: 5px;
+      margin-top: 6px;
     }
 
     .card {
@@ -59,18 +61,28 @@
       text-decoration: none;
       color: #fff;
       padding: 20px;
-      margin-bottom: 15px;
-      border-radius: 14px;
-      background: rgba(255, 255, 255, 0.05);
-      backdrop-filter: blur(10px);
-      transition: all 0.25s ease;
+      margin-bottom: 18px;
+      border-radius: 16px;
+      background: rgba(255, 255, 255, 0.04);
+      backdrop-filter: blur(12px);
+      transition: all 0.35s ease;
       border: 1px solid rgba(255,255,255,0.05);
+      transform: translateY(20px);
+      opacity: 0;
+      animation: cardFade 0.6s forwards;
     }
 
+    .card:nth-child(1) { animation-delay: 0.2s; }
+    .card:nth-child(2) { animation-delay: 0.3s; }
+    .card:nth-child(3) { animation-delay: 0.4s; }
+    .card:nth-child(4) { animation-delay: 0.5s; }
+    .card:nth-child(5) { animation-delay: 0.6s; }
+
     .card:hover {
-      transform: translateY(-5px) scale(1.02);
+      transform: translateY(-8px) scale(1.03);
       background: rgba(255, 255, 255, 0.08);
-      border: 1px solid rgba(255,255,255,0.15);
+      border: 1px solid rgba(255,255,255,0.2);
+      box-shadow: 0 0 25px rgba(99,102,241,0.3);
     }
 
     .card-title {
@@ -81,14 +93,33 @@
     .card-desc {
       font-size: 13px;
       opacity: 0.5;
-      margin-top: 5px;
+      margin-top: 6px;
     }
 
     .footer {
       text-align: center;
-      margin-top: 30px;
+      margin-top: 40px;
       font-size: 12px;
       opacity: 0.4;
+      animation: fadeIn 2s ease;
+    }
+
+    /* Animations */
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+
+    @keyframes slideDown {
+      from { transform: translateY(-30px); opacity: 0; }
+      to { transform: translateY(0); opacity: 1; }
+    }
+
+    @keyframes cardFade {
+      to {
+        transform: translateY(0);
+        opacity: 1;
+      }
     }
   </style>
 </head>
@@ -110,7 +141,7 @@
 
     <a href="kitchenix.html" class="card">
       <div class="card-title">Kitchenix</div>
-      <div class="card-desc">Culinary concept & food innovation</div>
+      <div class="card-desc">Culinary innovation & concept</div>
     </a>
 
     <a href="pixora.html" class="card">
@@ -125,11 +156,11 @@
 
     <a href="arcteak.html" class="card">
       <div class="card-title">Arcteak</div>
-      <div class="card-desc">Modern furniture & woodcraft</div>
+      <div class="card-desc">Modern woodcraft & furniture</div>
     </a>
 
     <div class="footer">
-      © 2026 ORILO — All Rights Reserved
+      © 2026 ORILO — Built with style ⚡
     </div>
 
   </div>
