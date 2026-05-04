@@ -10,9 +10,29 @@
 <style>
 * { margin:0; padding:0; box-sizing:border-box; font-family:Inter,sans-serif; }
 
-body { color:white; overflow-x:hidden; background:#020617; }
+body { color:white; background:#020617; overflow-x:hidden; }
 
-/* VIDEO BG */
+/* NAVBAR */
+.navbar {
+  position:fixed;
+  top:0;
+  width:100%;
+  padding:20px;
+  display:flex;
+  justify-content:space-between;
+  background:rgba(0,0,0,0.4);
+  backdrop-filter: blur(10px);
+  z-index:1000;
+}
+
+.navbar a {
+  color:white;
+  text-decoration:none;
+  margin-left:20px;
+  opacity:0.7;
+}
+
+/* VIDEO */
 video {
   position:fixed;
   width:100%;
@@ -30,29 +50,29 @@ video {
 
 /* SECTION */
 .section {
-  padding:120px 20px;
+  padding:140px 20px;
   max-width:1000px;
   margin:auto;
   opacity:0;
-  transform:translateY(40px);
-  transition:all 0.8s ease;
+  transform:translateY(50px);
+  transition:1s;
 }
 .section.show {
   opacity:1;
   transform:translateY(0);
 }
 
-/* HERO */
-.hero {
-  text-align:center;
-  padding-top:180px;
+/* GLASS CARD */
+.card {
+  background:rgba(255,255,255,0.05);
+  backdrop-filter:blur(12px);
+  padding:20px;
+  border-radius:16px;
+  transition:0.4s;
 }
-.hero h1 {
-  font-size:48px;
-}
-.hero p {
-  opacity:0.7;
-  margin-top:10px;
+.card:hover {
+  transform:translateY(-6px);
+  background:rgba(255,255,255,0.1);
 }
 
 /* GRID */
@@ -62,21 +82,11 @@ video {
   gap:20px;
 }
 
-.card {
-  padding:20px;
-  background:rgba(255,255,255,0.05);
-  border-radius:14px;
-  transition:0.3s;
-}
-.card:hover {
-  transform:translateY(-5px);
-  background:rgba(255,255,255,0.1);
-}
+/* HERO */
+.hero h1 { font-size:52px; }
+.hero p { opacity:0.6; }
 
 /* CTA */
-.cta {
-  text-align:center;
-}
 .cta button {
   padding:12px 24px;
   border:none;
@@ -85,11 +95,29 @@ video {
   color:white;
   cursor:pointer;
 }
+
+/* PAGE TRANSITION */
+.fade-out {
+  opacity:0;
+  filter:blur(10px);
+  transition:0.5s;
+}
 </style>
 </head>
 
 <body>
 
+<!-- NAVBAR -->
+<div class="navbar">
+  <div>ORILO</div>
+  <div>
+    <a href="#">Home</a>
+    <a href="#">Work</a>
+    <a href="#">Contact</a>
+  </div>
+</div>
+
+<!-- VIDEO -->
 <video autoplay muted loop playsinline>
   <source src="bg.mp4" type="video/mp4">
 </video>
@@ -97,19 +125,19 @@ video {
 
 <!-- HERO -->
 <div class="section hero show">
-  <h1>ORILO Creative Agency</h1>
-  <p>Building multi-brand digital ecosystem</p>
+  <h1>We Build Digital Brands</h1>
+  <p>Creative ecosystem & design systems</p>
 </div>
 
-<!-- ABOUT -->
+<!-- STORY -->
 <div class="section">
-  <h2>About</h2>
-  <p>We create brands, experiences, and digital systems that scale.</p>
+  <h2>Our Approach</h2>
+  <p>We combine strategy, design, and storytelling to craft impactful brands.</p>
 </div>
 
 <!-- BRANDS -->
 <div class="section">
-  <h2>Our Brands</h2>
+  <h2>Brands</h2>
   <div class="grid">
     <a href="sakawiji.html" class="card">SakaWiji</a>
     <a href="kitchenix.html" class="card">Kitchenix</a>
@@ -119,30 +147,48 @@ video {
   </div>
 </div>
 
-<!-- SERVICES -->
+<!-- CASE STUDY -->
 <div class="section">
-  <h2>Services</h2>
+  <h2>Case Study</h2>
   <div class="grid">
-    <div class="card">Brand Identity</div>
-    <div class="card">Web Design</div>
-    <div class="card">Creative Direction</div>
+    <div class="card">
+      <h3>Brand X</h3>
+      <p>Increased engagement by 300%</p>
+    </div>
+    <div class="card">
+      <h3>Startup Y</h3>
+      <p>Built full design system</p>
+    </div>
   </div>
 </div>
 
 <!-- CTA -->
 <div class="section cta">
-  <h2>Let’s Build Something Big</h2>
-  <button>Contact Us</button>
+  <h2>Let’s Work Together</h2>
+  <button>Start Project</button>
 </div>
 
 <script>
+/* SCROLL ANIMATION */
 const sections = document.querySelectorAll(".section");
-
 window.addEventListener("scroll", () => {
   sections.forEach(sec => {
     const top = sec.getBoundingClientRect().top;
     if(top < window.innerHeight - 100){
       sec.classList.add("show");
+    }
+  });
+});
+
+/* PAGE TRANSITION */
+document.querySelectorAll("a").forEach(link => {
+  link.addEventListener("click", function(e) {
+    if(this.getAttribute("href").includes(".html")){
+      e.preventDefault();
+      document.body.classList.add("fade-out");
+      setTimeout(() => {
+        window.location = this.href;
+      }, 400);
     }
   });
 });
